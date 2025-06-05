@@ -32,7 +32,3 @@ Open terminal in the project folder and run:
 ## Credits
 
 Built using [raylib](https://github.com/raysan5/raylib) — a simple and easy-to-use C library to enjoy videogame programming.
-
-## License
-
-Check the repository for a `LICENSE` file, if included.
