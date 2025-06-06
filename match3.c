@@ -43,12 +43,12 @@ int main(void){
     SetTargetFPS(60);
     srand(time(NULL));
 
-    background= LoadTexture("assects/background.jgp");
+    background= LoadTexture("assects/background.jpg");
 
     init_board();
     printf("Game started!\n");
 
-    while (!WindowShouldClose){
+    while (!WindowShouldClose()){
 
         // Game Logic
 
