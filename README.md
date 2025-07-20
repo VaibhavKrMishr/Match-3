@@ -30,5 +30,5 @@ Open terminal in the project folder and run:
 `./match3`
 
 ## Credits
-
+Kubbi - Up In My Jam as BGM
 Built using [raylib](https://github.com/raysan5/raylib) — a simple and easy-to-use C library to enjoy videogame programming.

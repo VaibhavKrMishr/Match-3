@@ -22,6 +22,9 @@ Vector2 selected_tile = {-1,-1};
 float fall_speed =8.0f;
 float match_delay_timer =0.0f;
 const float match_delay_duration=0.3f;
+Music background_music;
+Sound match_sound;
+
 
 typedef enum{
     State_Idle,
@@ -139,13 +142,20 @@ int main(void){
     SetTargetFPS(60);
     srand(time(NULL));
 
-    background= LoadTexture("assects/background.jpg");
+    InitAudioDevice();
+
+    background= LoadTexture("assets/background.jpg");
+    background_music = LoadMusicStream("assets/bgm.mp3");
+
+    PlayMusicStream(background_music);
 
     init_board();
     printf("Game started!\n");
     Vector2 mouse ={0,0};
 
     while (!WindowShouldClose()){
+
+        UpdateMusicStream(background_music);
 
         // Game Logic
         mouse = GetMousePosition();
@@ -220,6 +230,13 @@ if(find_matches()){
             0.0f,
             WHITE
         );
+        DrawRectangle(
+            grid_origin.x,
+            grid_origin.y,
+            BORAD_SIZE * TILE_SIZE,
+            BORAD_SIZE * TILE_SIZE,
+            Fade(DARKGRAY,0.75f)
+        );
         
         for(int y =0;y<BORAD_SIZE;y++){
         for (int  x=0;x<BORAD_SIZE;x++){
@@ -263,7 +280,12 @@ if(find_matches()){
         EndDrawing();
 
     }
+    StopMusicStream(background_music);
+    UnloadMusicStream(background_music);
     UnloadTexture(background);
+
+
+    CloseAudioDevice();
 
     CloseWindow();
 
